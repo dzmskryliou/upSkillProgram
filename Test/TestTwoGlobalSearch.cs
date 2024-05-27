@@ -1,8 +1,9 @@
-﻿using log4net;
+﻿using Business;
+using Core;
+using log4net;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
-using Tests;
 
 
 namespace Tests
@@ -29,18 +30,6 @@ namespace Tests
             homePage.AcceptCookies();
             navMenu.Search(itemToSearch);
             homePage.SearchTextInLinkCount($"//a[contains(@href, '{itemToSearch}')]");
-        }
-
-        private class HomePage
-        {
-            private IWebDriver driver;
-            private ILog log;
-
-            public HomePage(IWebDriver driver, ILog log)
-            {
-                this.driver = driver;
-                this.log = log;
-            }
         }
     }
 }

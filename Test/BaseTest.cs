@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using Core;
+using log4net;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
