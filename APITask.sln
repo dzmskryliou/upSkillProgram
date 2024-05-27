@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "SeleniumPracticalTask\Business.csproj", "{347754EA-AE4B-4327-A15E-4C930DC51CFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{395DCE65-90E1-4AE0-8BC2-BDD9569A5C0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{577EE35F-0F15-45AF-B6DE-D2D0BC3ABF49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{395DCE65-90E1-4AE0-8BC2-BDD9569A5C0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{395DCE65-90E1-4AE0-8BC2-BDD9569A5C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{395DCE65-90E1-4AE0-8BC2-BDD9569A5C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{395DCE65-90E1-4AE0-8BC2-BDD9569A5C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577EE35F-0F15-45AF-B6DE-D2D0BC3ABF49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577EE35F-0F15-45AF-B6DE-D2D0BC3ABF49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577EE35F-0F15-45AF-B6DE-D2D0BC3ABF49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577EE35F-0F15-45AF-B6DE-D2D0BC3ABF49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {939DD431-ABC2-45EC-9D86-F8AEA1A3A591}
+	EndGlobalSection
+EndGlobal
