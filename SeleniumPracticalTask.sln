@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumPracticalTask", "SeleniumPracticalTask\SeleniumPracticalTask.csproj", "{347754EA-AE4B-4327-A15E-4C930DC51CFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowTask", "BDDTask\SpecFlowTask.csproj", "{EE2DF7AB-3C26-4E78-B7A5-2605D4C8E733}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{347754EA-AE4B-4327-A15E-4C930DC51CFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2DF7AB-3C26-4E78-B7A5-2605D4C8E733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2DF7AB-3C26-4E78-B7A5-2605D4C8E733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2DF7AB-3C26-4E78-B7A5-2605D4C8E733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2DF7AB-3C26-4E78-B7A5-2605D4C8E733}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
