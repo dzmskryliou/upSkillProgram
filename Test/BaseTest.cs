@@ -14,7 +14,7 @@ namespace Tests
 
         private IWebDriver _driver;
 
-        [OneTimeSetUp]
+        [OneTimeTearDown]
         public void BaseSetUp()
         {
             LogHelper.InitializeLogger();
