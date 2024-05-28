@@ -4,8 +4,15 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- APITask
-
+- '*'
+pr:
+- '*'
+schedules:
+  - cron: "0 0 * * *"
+    branches:
+      include:
+        - APITask
+        - main
 pool:
   vmImage: 'windows-latest'
 
