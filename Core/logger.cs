@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Core
 
 {
-    public class BaseTest
+    public class logger
     {
         protected static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
