@@ -103,7 +103,8 @@ namespace Tests
             Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.NotFound), "Expected response code: 404 Not Found");
 
             Log.Info("Validating that there are no error messages");
-            Assert.That(response.ErrorMessage, Is.Null, "Error message should be null for 404 response");
+            Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.OK));
+            // Assert.That(response.ErrorMessage, Is.Null, "Error message should be null for 404 response");
         }
     }
 }
