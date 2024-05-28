@@ -12,6 +12,7 @@ schedules:
     branches:
       include:
         - APITask
+        - TestAutomationFramework
         - main
 pool:
   vmImage: 'windows-latest'
