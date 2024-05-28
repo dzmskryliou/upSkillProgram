@@ -60,7 +60,7 @@ namespace Business.Services
                 }
             }
             Log.Info("Validate that Content-Type Header value equals to 'application/json; charset=utf-8'");
-            Assert.That(contentTypeHeader.Value.ToString(), Is.EqualTo("application/json; charset=utf-8"), "Unexpected value of Content-Type header");
+            Assert.That(actual: contentTypeHeader.Value.ToString(), expression: Is.EqualTo("application/json; charset=utf-8"), message: "Unexpected value of Content-Type header");
         }
     }
 }
