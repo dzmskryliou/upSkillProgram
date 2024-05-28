@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "SeleniumPracticalTask\Business.csproj", "{347754EA-AE4B-4327-A15E-4C930DC51CFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "SeleniumPracticalTask\Business.csproj", "{347754EA-AE4B-4327-A15E-4C930DC51CFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Coree\Core.csproj", "{D7062769-C4E2-4F61-AEBE-8DF6606AB6FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Coree\Core.csproj", "{D7062769-C4E2-4F61-AEBE-8DF6606AB6FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Test\Tests.csproj", "{BA851FB5-F17C-4521-AF8F-42B31F6961EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Test\Tests.csproj", "{BA851FB5-F17C-4521-AF8F-42B31F6961EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{08E6B426-4751-444E-AE40-E979BC77FC2A}"
+	ProjectSection(SolutionItems) = preProject
+		pom.xml = pom.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
