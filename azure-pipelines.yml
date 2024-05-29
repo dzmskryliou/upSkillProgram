@@ -44,15 +44,16 @@ jobs:
     inputs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
+    continueOnError: true
 
 - job: TestAutomationFrameworkJob
   dependsOn: APITaskJob
-  condition:  and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'TestAutomationFramework'))
+  condition:  eq(variables['Build.SourceBranchName'], 'APITask')
 
   steps:
   - checkout: self
     clean: true
-    fetchDepth: 0
+    fetchDepth: 1
     persistCredentials: true
 
   - task: NuGetToolInstaller@1
