@@ -15,6 +15,14 @@ schedules:
         - TestAutomationFramework
         - main
 
+parameters:
+- name: browser
+  values:
+    - 'Edge'
+    - 'Chrome'
+    - 'Firefox'
+  default: 'Edge'
+
 pool:
   vmImage: 'windows-latest'
 
@@ -22,14 +30,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-
-parameters:
-- name: browser
-  default: 'Edge'
-  values:
-  - 'Edge'
-  - 'Chrome'
-  - 'Firefox'
 
 stages:
   - stage: APIstage
@@ -62,6 +62,7 @@ stages:
 
   - stage: TestAutmationFrameworkStage
     condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
+    dependsOn: APIstage
     jobs:
     - job: TestAutomationFrameworkJob
       steps:
