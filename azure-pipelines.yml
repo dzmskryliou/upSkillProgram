@@ -27,6 +27,10 @@ jobs:
 - job: APITaskJob
   condition: eq(variables['Build.SourceBranchName'], 'APITask')
   steps:
+  - checkout: self
+    persistCredentials: true
+    clean: true
+
   - task: NuGetToolInstaller@1
 
   - task: NuGetCommand@2
@@ -44,17 +48,13 @@ jobs:
     inputs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
-    continueOnError: true
 
 - job: TestAutomationFrameworkJob
-  dependsOn: APITaskJob
-  condition:  eq(variables['Build.SourceBranchName'], 'APITask')
-
+  condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
   steps:
   - checkout: self
-    clean: true
-    fetchDepth: 1
     persistCredentials: true
+    clean: true
 
   - task: NuGetToolInstaller@1
 
