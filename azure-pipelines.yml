@@ -33,8 +33,7 @@ variables:
 
 jobs:
 - job: APITaskJob
-  displayName: 'Build and Test APITask'
-  condition: and(succeeded(), eq(variables['Build.SourceBranchName'], 'APITask'))
+  condition: eq(variables['Build.SourceBranchName'], 'APITask')
   steps:
   - task: NuGetToolInstaller@1
 
