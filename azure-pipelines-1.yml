@@ -13,7 +13,7 @@ schedules:
       include:
         - APITask
         - TestAutomationFramework
-        - main
+- main
 
 parameters:
 - name: browser
@@ -36,28 +36,28 @@ stages:
     condition: eq(variables['Build.SourceBranchName'], 'APITask')
     jobs:
     - job: APITaskJob
-      steps:
+steps:
       - checkout: self
         persistCredentials: true
         clean: true
 
-      - task: NuGetToolInstaller@1
+- task: NuGetToolInstaller@1
 
-      - task: NuGetCommand@2
-        inputs:
-          restoreSolution: '$(solution)'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
 
-      - task: VSBuild@1
-        inputs:
+- task: VSBuild@1
+  inputs:
     solution: '$(solution)'
-          msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-          platform: '$(buildPlatform)'
-          configuration: '$(buildConfiguration)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
-      - task: VSTest@2
-        inputs:
-          platform: '$(buildPlatform)'
-          configuration: '$(buildConfiguration)'
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
       continueOnError: true
 
   - stage: TestAutomationFrameworkStage

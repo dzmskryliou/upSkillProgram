@@ -15,6 +15,14 @@ schedules:
         - TestAutomationFramework
         - main
 
+parameters:
+- name: browser
+  values:
+    - 'Edge'
+    - 'Chrome'
+    - 'Firefox'
+  default: 'Edge'
+
 pool:
   vmImage: 'windows-latest'
 
@@ -42,3 +50,17 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
   continueOnError: true
+
+- task: VSBuild@1
+  inputs:
+    solution: '**/*.sln'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\TestAutomationFramework.zip" /p:DeployIisAppPath="Default Web Site"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+
