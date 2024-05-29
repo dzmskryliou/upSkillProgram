@@ -4,15 +4,18 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- '*'
+  branches:
+    include:
+      - APITask
+      - TestAutomationFramework
+      - main
+
 pr:
 - '*'
 schedules:
   - cron: "0 0 * * *"
     branches:
       include:
-        - APITask
-        - TestAutomationFramework
         - main
 
 parameters:
@@ -33,9 +36,9 @@ variables:
 
 stages:
   - stage: APIstage
+    condition: eq(variables['Build.SourceBranchName'], 'APITask')
     jobs:
     - job: APITaskJob
-      condition: eq(variables['Build.SourceBranchName'], 'APITask')
       steps:
       - checkout: self
         persistCredentials: true
@@ -49,7 +52,7 @@ stages:
 
       - task: VSBuild@1
         inputs:
-          solution: '$(solution)'
+          solution: '**/*.sln'
           msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
           platform: '$(buildPlatform)'
           configuration: '$(buildConfiguration)'
@@ -60,12 +63,11 @@ stages:
           configuration: '$(buildConfiguration)'
       continueOnError: true
 
-  - stage: TestAutmationFrameworkStage
-    condition: eq(variables['Build.SourceBranch'], 'TestAutomationFramework')
+  - stage: TestAutomationFrameworkStage
+    condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
     dependsOn: APIstage
     jobs:
     - job: TestAutomationFrameworkJob
-      condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
       steps:
       - checkout: self
         persistCredentials: true
@@ -79,8 +81,8 @@ stages:
 
       - task: VSBuild@1
         inputs:
-          solution: '$(solution)'
-          msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+          solution: '**/*.sln'
+          msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\TestAutomationFramework.zip" /p:DeployIisAppPath="Default Web Site"'
           platform: '$(buildPlatform)'
           configuration: '$(buildConfiguration)'
 
@@ -88,4 +90,3 @@ stages:
         inputs:
           platform: '$(buildPlatform)'
           configuration: '$(buildConfiguration)'
-
