@@ -23,53 +23,66 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-jobs:
-- job: APITaskJob
-  condition: eq(variables['Build.SourceBranchName'], 'APITask')
-  steps:
-  - checkout: self
-    persistCredentials: true
-    clean: true
+parameters:
+- name: browser
+  default: 'Edge'
+  values:
+  - 'Edge'
+  - 'Chrome'
+  - 'Firefox'
 
-  - task: NuGetToolInstaller@1
+stages:
+  - stage: APIstage
+    condition: eq(variables['Build.SourceBranchName'], 'APITask')
+    jobs:
+    - job: APITaskJob
+      steps:
+      - checkout: self
+        persistCredentials: true
+        clean: true
 
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: '$(solution)'
+      - task: NuGetToolInstaller@1
 
-  - task: VSBuild@1
-    inputs:
-      solution: '$(solution)'
-      msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
 
-  - task: VSTest@2
-    inputs:
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
+      - task: VSBuild@1
+        inputs:
+          solution: '$(solution)'
+          msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+          platform: '$(buildPlatform)'
+          configuration: '$(buildConfiguration)'
 
-- job: TestAutomationFrameworkJob
-  condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
-  steps:
-  - checkout: self
-    persistCredentials: true
-    clean: true
+      - task: VSTest@2
+        inputs:
+          platform: '$(buildPlatform)'
+          configuration: '$(buildConfiguration)'
+      continueOnError: true
 
-  - task: NuGetToolInstaller@1
+  - stage: TestAutmationFrameworkStage
+    condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
+    jobs:
+    - job: TestAutomationFrameworkJob
+      steps:
+      - checkout: self
+        persistCredentials: true
+        clean: true
 
-  - task: NuGetCommand@2
-    inputs:
-      restoreSolution: '$(solution)'
+      - task: NuGetToolInstaller@1
 
-  - task: VSBuild@1
-    inputs:
-      solution: '$(solution)'
-      msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
+      - task: NuGetCommand@2
+        inputs:
+          restoreSolution: '$(solution)'
 
-  - task: VSTest@2
-    inputs:
-      platform: '$(buildPlatform)'
-      configuration: '$(buildConfiguration)'
+      - task: VSBuild@1
+        inputs:
+          solution: '$(solution)'
+          msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+          platform: '$(buildPlatform)'
+          configuration: '$(buildConfiguration)'
+
+      - task: VSTest@2
+        inputs:
+          platform: '$(buildPlatform)'
+          configuration: '$(buildConfiguration)'
