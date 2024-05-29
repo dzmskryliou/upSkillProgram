@@ -47,8 +47,13 @@ jobs:
 
 - job: TestAutomationFrameworkJob
   dependsOn: APITaskJob
-  condition: always()
+  condition: and(succeededOrFailed(), eq(variables['Build.SourceBranchName'], 'TestAutomationFramework'))
+
   steps:
+  - checkout: self
+    persistCredentials: true
+    clean: true
+
   - task: NuGetToolInstaller@1
 
   - task: NuGetCommand@2
