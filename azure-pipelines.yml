@@ -47,7 +47,7 @@ jobs:
 
 - job: TestAutomationFrameworkJob
   dependsOn: APITaskJob
-  condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
+  condition: always()
   steps:
   - task: NuGetToolInstaller@1
 
