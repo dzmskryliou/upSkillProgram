@@ -74,4 +74,4 @@ jobs:
     inputs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
-  dependsOn: APITaskJob
+    condition: always()
