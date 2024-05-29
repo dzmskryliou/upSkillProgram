@@ -33,9 +33,9 @@ variables:
 
 stages:
   - stage: APIstage
-    condition: eq(variables['Build.SourceBranchName'], 'APITask')
     jobs:
     - job: APITaskJob
+      condition: eq(variables['Build.SourceBranchName'], 'APITask')
       steps:
       - checkout: self
         persistCredentials: true
@@ -61,10 +61,10 @@ stages:
       continueOnError: true
 
   - stage: TestAutmationFrameworkStage
-    condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
     dependsOn: APIstage
     jobs:
     - job: TestAutomationFrameworkJob
+      condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
       steps:
       - checkout: self
         persistCredentials: true
@@ -87,3 +87,4 @@ stages:
         inputs:
           platform: '$(buildPlatform)'
           configuration: '$(buildConfiguration)'
+
