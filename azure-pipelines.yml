@@ -74,4 +74,5 @@ jobs:
     inputs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
+  - script: 
     condition: always()
