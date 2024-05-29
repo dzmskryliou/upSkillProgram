@@ -61,6 +61,7 @@ stages:
       continueOnError: true
 
   - stage: TestAutmationFrameworkStage
+    condition: eq(variables['Build.SourceBranch'], 'TestAutomationFramework')
     dependsOn: APIstage
     jobs:
     - job: TestAutomationFrameworkJob
