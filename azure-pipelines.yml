@@ -15,14 +15,6 @@ schedules:
         - TestAutomationFramework
         - main
 
-parameters:
-- name: browser
-  values:
-    - 'Edge'
-    - 'Chrome'
-    - 'Firefox'
-  default: 'Edge'
-
 pool:
   vmImage: 'windows-latest'
 
@@ -52,9 +44,9 @@ jobs:
     inputs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
-  continueOnError: true
 
 - job: TestAutomationFrameworkJob
+  dependsOn: APITaskJob
   condition: eq(variables['Build.SourceBranchName'], 'TestAutomationFramework')
   steps:
   - task: NuGetToolInstaller@1
@@ -74,4 +66,3 @@ jobs:
     inputs:
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
-    condition: always()
